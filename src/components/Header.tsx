@@ -2,10 +2,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Trophy, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { logout } = useAuth();
   
   const navItems = [
     { path: "/tips", label: "Dicas" },
@@ -17,6 +19,7 @@ const Header = () => {
   if (location.pathname === "/") return null;
 
   const handleLogout = () => {
+    logout();
     toast.success("Logout realizado com sucesso!");
     navigate("/");
   };
