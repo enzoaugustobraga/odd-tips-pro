@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Trophy } from "lucide-react";
+import { Trophy, HelpCircle, Info } from "lucide-react";
 import { toast } from "sonner";
 
 const Login = () => {
@@ -75,6 +75,24 @@ const Login = () => {
           </form>
         </CardContent>
       </Card>
+
+      <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <Link
+          to="/faq"
+          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+        >
+          <HelpCircle className="h-4 w-4" />
+          Dúvidas e Cadastro
+        </Link>
+        <span className="hidden sm:inline text-muted-foreground">•</span>
+        <Link
+          to="/about"
+          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+        >
+          <Info className="h-4 w-4" />
+          Conheça nosso serviço
+        </Link>
+      </div>
     </div>
   );
 };
