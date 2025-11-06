@@ -32,7 +32,7 @@ export const tipsByBookmaker: Record<string, Tip[]> = {
       analysis: "Ambas as equipes apresentam ataques fortes e defesas inconsistentes nas últimas partidas. Histórico recente mostra média de 3.2 gols por jogo entre elas.",
     },
     {
-      match: "São Paulo x Corinthians",
+      match: "São Paulo x Flamengo",
       league: "Brasileirão Série A",
       betType: "Ambos marcam",
       odds: "1.75",
