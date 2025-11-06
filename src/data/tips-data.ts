@@ -25,7 +25,7 @@ export interface Tip {
 export const tipsByBookmaker: Record<string, Tip[]> = {
   betano: [
     {
-      match: "Flamengo x Palmeiras",
+      match: "Palmeiras x Santos",
       league: "Brasileirão Série A",
       betType: "Mais de 2.5 gols",
       odds: "1.85",
