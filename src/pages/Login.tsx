@@ -27,8 +27,33 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <Card className="w-full max-w-md shadow-lg">
+    <div className="min-h-screen flex flex-col">
+      {/* Top Navigation Panel */}
+      <div className="bg-card border-b border-border">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-center gap-8">
+            <Link
+              to="/faq"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all"
+            >
+              <HelpCircle className="h-4 w-4" />
+              <span>Dúvidas e Cadastro</span>
+            </Link>
+            <div className="hidden sm:block w-px h-6 bg-border" />
+            <Link
+              to="/about"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all"
+            >
+              <Info className="h-4 w-4" />
+              <span>Conheça nosso serviço</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Login Card */}
+      <div className="flex-1 flex items-center justify-center p-4">
+        <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="text-center space-y-4">
           <div className="flex justify-center">
             <div className="bg-primary/10 p-3 rounded-full">
@@ -75,23 +100,6 @@ const Login = () => {
           </form>
         </CardContent>
       </Card>
-
-      <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <Link
-          to="/faq"
-          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-        >
-          <HelpCircle className="h-4 w-4" />
-          Dúvidas e Cadastro
-        </Link>
-        <span className="hidden sm:inline text-muted-foreground">•</span>
-        <Link
-          to="/about"
-          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-        >
-          <Info className="h-4 w-4" />
-          Conheça nosso serviço
-        </Link>
       </div>
     </div>
   );
