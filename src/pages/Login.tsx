@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Trophy, HelpCircle, Info } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
+import { allowedEmails } from "@/data/allowed-emails";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -25,6 +26,13 @@ const Login = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
+    // Verificar se o email está na lista de permitidos
+    if (!allowedEmails.includes(email.toLowerCase().trim())) {
+      setError("Email não autorizado. Entre em contato com o administrador.");
+      toast.error("Email não autorizado");
+      return;
+    }
 
     if (password === "apostador10") {
       login();
