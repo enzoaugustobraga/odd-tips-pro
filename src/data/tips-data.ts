@@ -92,4 +92,27 @@ export const tipsByBookmaker: Record<string, Tip[]> = {
       analysis: "Atlético conhecido por jogos truncados. Sevilla tem segundo melhor ataque e defesa equilibrada. Tende a ser jogo tático.",
     },
   ],
+  kto: [
+    {
+      match: "Chelsea x Arsenal",
+      league: "Premier League",
+      betType: "Ambos marcam",
+      odds: "1.70",
+      analysis: "Clássico londrino sempre emocionante. Ambas as equipes têm setores ofensivos em ótima forma e costumam balançar as redes neste confronto.",
+    },
+    {
+      match: "Napoli x Roma",
+      league: "Serie A",
+      betType: "Mais de 2.5 gols",
+      odds: "1.88",
+      analysis: "Napoli com ataque veloz e eficiente. Roma com defesa vulnerável fora de casa. Histórico recente aponta para jogos com muitos gols.",
+    },
+    {
+      match: "Benfica x Porto",
+      league: "Primeira Liga",
+      betType: "Casa vence",
+      odds: "2.00",
+      analysis: "Benfica invicto em casa nesta temporada. Porto com problemas de lesões no elenco. Mando de campo deve fazer diferença neste clássico português.",
+    },
+  ],
 };
