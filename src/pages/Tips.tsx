@@ -22,11 +22,11 @@ const bookmakerColors = {
     badge: "bg-orange-500/20 text-orange-600 border-orange-500/30"
   },
   mgm: {
-    gradient: "from-yellow-600 to-amber-600",
-    bg: "bg-yellow-600/10",
-    border: "border-yellow-600",
-    text: "text-yellow-600",
-    badge: "bg-yellow-600/20 text-yellow-700 border-yellow-600/30"
+    gradient: "from-yellow-500 to-yellow-600",
+    bg: "bg-yellow-500/10",
+    border: "border-yellow-500",
+    text: "text-yellow-500",
+    badge: "bg-yellow-500/20 text-yellow-600 border-yellow-500/30"
   },
   kto: {
     gradient: "from-red-600 to-red-800",
@@ -63,7 +63,7 @@ const Tips = () => {
           </TabsTrigger>
           <TabsTrigger 
             value="mgm" 
-            className="font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-600 data-[state=active]:to-amber-600 data-[state=active]:text-white"
+            className="font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-500 data-[state=active]:to-yellow-600 data-[state=active]:text-white"
           >
             MGM
           </TabsTrigger>
