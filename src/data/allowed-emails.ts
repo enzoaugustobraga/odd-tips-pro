@@ -1,5 +1,3 @@
-export const allowedEmails = process.env.AUTHORIZED_EMAILS
-  ?.split(",")
-  .map(email => email.trim()) || [];
-
-console.log("Emails autorizados:", allowedEmails);
+export const allowedEmails = (
+  process.env.NEXT_PUBLIC_AUTHORIZED_EMAILS?.split(",").map(email => email.trim()) || []
+);
