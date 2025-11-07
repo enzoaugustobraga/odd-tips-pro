@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Trophy, HelpCircle, Info } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
-import { allowedEmails } from "@/data/allowed-emails";
+import { allowedEmails as rawAllowedEmails } from "@/data/allowed-emails";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +15,9 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { isAuthenticated, login } = useAuth();
+
+  // Garantir que todos os e-mails importados sejam lowercase e sem espaços
+  const allowedEmails = rawAllowedEmails.map(e => e.toLowerCase().trim());
 
   // Redirect if already logged in
   useEffect(() => {
@@ -27,8 +30,10 @@ const Login = () => {
     e.preventDefault();
     setError("");
 
+    const trimmedEmail = email.toLowerCase().trim();
+
     // Verificar se o email está na lista de permitidos
-    if (!allowedEmails.includes(email.toLowerCase().trim())) {
+    if (!allowedEmails.includes(trimmedEmail)) {
       setError("Email não autorizado. Entre em contato com o administrador.");
       toast.error("Email não autorizado");
       return;
@@ -72,52 +77,52 @@ const Login = () => {
       {/* Login Card */}
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-md shadow-lg">
-        <CardHeader className="text-center space-y-4">
-          <div className="flex justify-center">
-            <div className="bg-primary/10 p-3 rounded-full">
-              <Trophy className="h-12 w-12 text-primary" />
+          <CardHeader className="text-center space-y-4">
+            <div className="flex justify-center">
+              <div className="bg-primary/10 p-3 rounded-full">
+                <Trophy className="h-12 w-12 text-primary" />
+              </div>
             </div>
-          </div>
-          <div>
-            <CardTitle className="text-3xl font-bold text-primary">OddTips</CardTitle>
-            <CardDescription className="text-base mt-2">
-              Dicas profissionais de apostas de futebol
-            </CardDescription>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">E-mail</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="seu@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+            <div>
+              <CardTitle className="text-3xl font-bold text-primary">OddTips</CardTitle>
+              <CardDescription className="text-base mt-2">
+                Dicas profissionais de apostas de futebol
+              </CardDescription>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Senha</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Digite sua senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              {error && (
-                <p className="text-sm text-destructive font-medium">{error}</p>
-              )}
-            </div>
-            <Button type="submit" className="w-full">
-              Entrar
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">E-mail</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="seu@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="password">Senha</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Digite sua senha"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                {error && (
+                  <p className="text-sm text-destructive font-medium">{error}</p>
+                )}
+              </div>
+              <Button type="submit" className="w-full">
+                Entrar
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
