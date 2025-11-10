@@ -7,17 +7,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Trophy, HelpCircle, Info } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
-import { allowedEmails as rawAllowedEmails } from "@/data/allowed-emails";
+import { supabase } from "@/integrations/supabase/client";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isValidating, setIsValidating] = useState(false);
   const navigate = useNavigate();
   const { isAuthenticated, login } = useAuth();
-
-  // Garantir que todos os e-mails importados sejam lowercase e sem espaços
-  const allowedEmails = rawAllowedEmails.map(e => e.toLowerCase().trim());
 
   // Redirect if already logged in
   useEffect(() => {
@@ -26,26 +24,49 @@ const Login = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setIsValidating(true);
 
     const trimmedEmail = email.toLowerCase().trim();
 
-    // Verificar se o email está na lista de permitidos
-    if (!allowedEmails.includes(trimmedEmail)) {
-      setError("Email não autorizado. Entre em contato com o administrador.");
-      toast.error("Email não autorizado");
-      return;
-    }
+    try {
+      // Validate email via edge function
+      const { data, error: functionError } = await supabase.functions.invoke("validate-email", {
+        body: { email: trimmedEmail },
+      });
 
-    if (password === "apostador10") {
-      login();
-      toast.success("Login realizado com sucesso!");
-      navigate("/tips");
-    } else {
-      setError("Senha incorreta. Tente novamente.");
-      toast.error("Senha incorreta");
+      if (functionError) {
+        console.error("Error validating email:", functionError);
+        setError("Erro ao validar email. Tente novamente.");
+        toast.error("Erro ao validar email");
+        setIsValidating(false);
+        return;
+      }
+
+      if (!data?.valid) {
+        setError("Email não autorizado. Entre em contato com o administrador.");
+        toast.error("Email não autorizado");
+        setIsValidating(false);
+        return;
+      }
+
+      // Check password
+      if (password === "apostador10") {
+        login();
+        toast.success("Login realizado com sucesso!");
+        navigate("/tips");
+      } else {
+        setError("Senha incorreta. Tente novamente.");
+        toast.error("Senha incorreta");
+      }
+    } catch (err) {
+      console.error("Unexpected error:", err);
+      setError("Erro inesperado. Tente novamente.");
+      toast.error("Erro inesperado");
+    } finally {
+      setIsValidating(false);
     }
   };
 
@@ -117,8 +138,8 @@ const Login = () => {
                   <p className="text-sm text-destructive font-medium">{error}</p>
                 )}
               </div>
-              <Button type="submit" className="w-full">
-                Entrar
+              <Button type="submit" className="w-full" disabled={isValidating}>
+                {isValidating ? "Validando..." : "Entrar"}
               </Button>
             </form>
           </CardContent>
