@@ -28,7 +28,7 @@ const About = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-5xl">
       <div className="mb-12 text-center">
-        <h1 className="text-4xl font-bold mb-4 text-foreground">Conheça a OddTips</h1>
+        <h1 className="text-4xl font-bold mb-4 text-foreground">Conheça a BM OddTips</h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           Somos uma plataforma dedicada a fornecer análises e dicas informativas sobre apostas de futebol
         </p>
@@ -38,7 +38,7 @@ const About = () => {
         <Card>
           <CardContent className="pt-6 space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              A <strong className="text-foreground">OddTips</strong> nasceu com o propósito de democratizar o acesso a análises profissionais de futebol, 
+              A <strong className="text-foreground">BM OddTips</strong> nasceu com o propósito de democratizar o acesso a análises profissionais de futebol, 
               ajudando entusiastas do esporte a tomar decisões mais informadas em suas apostas.
             </p>
             <p>
@@ -47,7 +47,7 @@ const About = () => {
               e diversos outros fatores relevantes para cada partida.
             </p>
             <p>
-              <strong className="text-foreground">É importante ressaltar:</strong> A OddTips fornece dicas e análises com caráter <strong>informativo e educativo</strong>. 
+              <strong className="text-foreground">É importante ressaltar:</strong> A BM OddTips fornece dicas e análises com caráter <strong>informativo e educativo</strong>. 
               Nosso objetivo não é incentivar apostas financeiras desenfreadas, mas sim educar sobre o mercado 
               de apostas esportivas e ajudar nossos usuários a entender melhor o esporte.
             </p>
@@ -87,7 +87,7 @@ const About = () => {
             </p>
             <div className="space-y-2 text-muted-foreground">
               <p className="font-medium">
-                A OddTips <strong>NÃO</strong> compactua com apostas ilegais nem com menores de idade apostando.
+                A BM OddTips <strong>NÃO</strong> compactua com apostas ilegais nem com menores de idade apostando.
               </p>
               <p>
                 Apostas esportivas devem ser encaradas como entretenimento, nunca como fonte de renda.

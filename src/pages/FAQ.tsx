@@ -23,7 +23,7 @@ const FAQ = () => {
     },
     {
       question: "Posso apostar se tenho menos de 18 anos?",
-      answer: "NÃO. Apostas são proibidas para menores de 18 anos. A OddTips não compactua com apostas de menores de idade e reforça a importância da responsabilidade.",
+      answer: "NÃO. Apostas são proibidas para menores de 18 anos. A BM OddTips não compactua com apostas de menores de idade e reforça a importância da responsabilidade.",
     },
     {
       question: "Com que frequência as dicas são atualizadas?",
@@ -33,7 +33,7 @@ const FAQ = () => {
 
   const handleWhatsAppClick = () => {
     window.open(
-      "https://wa.me/5544997186338?text=Oi%2C+quero+abrir+minha+conta+e+saber+mais+sobre+as+dicas+da+OddTips!",
+      "https://wa.me/5544997186338?text=Oi%2C+quero+abrir+minha+conta+e+saber+mais+sobre+as+dicas+da+BM+OddTips!",
       "_blank"
     );
   };

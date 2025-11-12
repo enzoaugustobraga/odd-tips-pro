@@ -30,7 +30,7 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           <Link to="/tips" className="flex items-center gap-2 text-xl font-bold text-primary hover:opacity-80 transition-opacity">
             <Trophy className="h-6 w-6" />
-            <span>OddTips</span>
+            <span>BM OddTips</span>
           </Link>
           
           <div className="flex items-center gap-6">

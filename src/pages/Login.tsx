@@ -105,7 +105,7 @@ const Login = () => {
               </div>
             </div>
             <div>
-              <CardTitle className="text-3xl font-bold text-primary">OddTips</CardTitle>
+              <CardTitle className="text-3xl font-bold text-primary">BM OddTips</CardTitle>
               <CardDescription className="text-base mt-2">
                 Dicas profissionais de apostas de futebol
               </CardDescription>
